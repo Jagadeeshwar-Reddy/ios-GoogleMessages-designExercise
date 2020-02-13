@@ -1,2 +1,2 @@
-# ios-GoogleMessages-designExercise
+# iOS GoogleMessages DesignExercise
 Google iOS design exercise
