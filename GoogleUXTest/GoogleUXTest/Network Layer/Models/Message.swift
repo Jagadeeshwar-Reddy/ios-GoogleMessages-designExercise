@@ -38,3 +38,17 @@ struct Message: Decodable {
         }
     }
 }
+
+extension Message {
+    static let relativeDateFormatter: RelativeDateTimeFormatter = {
+       let formatter = RelativeDateTimeFormatter()
+        formatter.unitsStyle = .full
+        return formatter
+    }()
+    
+    var redableRelativeDate: String {
+        guard let updatedOn = updatedDate else { return "" }
+        return Message.relativeDateFormatter.localizedString(for: updatedOn, relativeTo: Date())
+    }
+    
+}

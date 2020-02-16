@@ -25,6 +25,7 @@
 		2CEEB8BA23F87BF900ADF10E /* MessageListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEEB8B923F87BF900ADF10E /* MessageListPresenter.swift */; };
 		2CEEB8BD23F8846600ADF10E /* UIImageView+dowload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEEB8BC23F8846600ADF10E /* UIImageView+dowload.swift */; };
 		2CEEB8BF23F8883300ADF10E /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEEB8BE23F8883300ADF10E /* RoundedImageView.swift */; };
+		2CF682AB23F95F9F00A396EB /* UIScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF682AA23F95F9F00A396EB /* UIScrollView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		2CEEB8B923F87BF900ADF10E /* MessageListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListPresenter.swift; sourceTree = "<group>"; };
 		2CEEB8BC23F8846600ADF10E /* UIImageView+dowload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+dowload.swift"; sourceTree = "<group>"; };
 		2CEEB8BE23F8883300ADF10E /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
+		2CF682AA23F95F9F00A396EB /* UIScrollView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,8 +104,7 @@
 				2CEEB8BB23F8844600ADF10E /* Helpers */,
 				2C6FB28523F5E0C700C062A3 /* AppDelegate.swift */,
 				2C6FB28723F5E0C700C062A3 /* SceneDelegate.swift */,
-				2C50606523F8901F0068F43B /* Detail */,
-				2C50606423F890170068F43B /* List */,
+				2CF682A923F947EE00A396EB /* View */,
 				2CEEB8A823F8263300ADF10E /* Network Layer */,
 				2C6FB28B23F5E0C700C062A3 /* Main.storyboard */,
 				2C6FB28E23F5E0CA00C062A3 /* Assets.xcassets */,
@@ -147,8 +148,18 @@
 			isa = PBXGroup;
 			children = (
 				2CEEB8BC23F8846600ADF10E /* UIImageView+dowload.swift */,
+				2CF682AA23F95F9F00A396EB /* UIScrollView+Extensions.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		2CF682A923F947EE00A396EB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C50606423F890170068F43B /* List */,
+				2C50606523F8901F0068F43B /* Detail */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +244,7 @@
 				2C6FB28823F5E0C700C062A3 /* SceneDelegate.swift in Sources */,
 				2CEEB8A723F820CA00ADF10E /* ShadowedView.swift in Sources */,
 				2CEEB8AD23F829BB00ADF10E /* AppspotAPI.swift in Sources */,
+				2CF682AB23F95F9F00A396EB /* UIScrollView+Extensions.swift in Sources */,
 				2CEEB8B823F857AE00ADF10E /* PageInformation.swift in Sources */,
 				2CEEB8B623F8471200ADF10E /* MessagesResponse.swift in Sources */,
 				2CEEB8BA23F87BF900ADF10E /* MessageListPresenter.swift in Sources */,

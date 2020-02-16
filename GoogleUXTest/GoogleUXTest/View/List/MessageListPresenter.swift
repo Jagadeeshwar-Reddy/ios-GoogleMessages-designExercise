@@ -17,6 +17,7 @@ protocol MessageListPresenterType {
     var messages: Messages { get }
     
     func loadNextPage()
+    func removeMessage(at index: Int, completion: (Bool) -> Void)
 }
 
 final class MessageListPresenter: MessageListPresenterType {
@@ -41,4 +42,13 @@ final class MessageListPresenter: MessageListPresenterType {
         }
     }
 
+    func removeMessage(at index: Int, completion: (Bool) -> Void) {
+        guard index < messages.count else {
+            completion(false)
+            return
+        }
+        
+        messages.remove(at: index)
+        completion(true)
+    }
 }
