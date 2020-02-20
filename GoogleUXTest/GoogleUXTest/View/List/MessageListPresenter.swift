@@ -9,13 +9,18 @@
 import Foundation
 
 protocol MessageListPresentable: class {
-    func updateList()
+    func showLoading()
+    func hideLoading()
+    
+    func reloadMessages()
+    func showError()
 }
 
 protocol MessageListPresenterType {
     var view: MessageListPresentable? { get set }
     var messages: Messages { get }
     
+    func loadMessages()
     func loadNextPage()
     func removeMessage(at index: Int, completion: (Bool) -> Void)
 }
@@ -27,21 +32,18 @@ final class MessageListPresenter: MessageListPresenterType {
     private var currentPageInformation = PageInformation.firstPage
     private var isLoadingNextPage: Bool = false
     
+    // to load first or current page
+    func loadMessages() {
+        loadNextPage()
+    }
+    
     func loadNextPage() {
         guard isLoadingNextPage == false else { return }
         
         isLoadingNextPage = true
-        AppspotService.getMessages(forPage: currentPageInformation) { [weak self] (messagesResponse, error) in
-            self?.isLoadingNextPage = false
-            if let messagesResponse = messagesResponse {
-                self?.messages.append(contentsOf: messagesResponse.messages)
-                let pageInfo = PageInformation(pageToken: messagesResponse.pageToken, count: messagesResponse.count)
-                self?.currentPageInformation = pageInfo
-                self?.view?.updateList()
-            }
-        }
+        loadDataFor(page: currentPageInformation)
     }
-
+    
     func removeMessage(at index: Int, completion: (Bool) -> Void) {
         guard index < messages.count else {
             completion(false)
@@ -50,5 +52,35 @@ final class MessageListPresenter: MessageListPresenterType {
         
         messages.remove(at: index)
         completion(true)
+    }
+}
+
+// Private methods
+extension MessageListPresenter {
+    private func loadDataFor(page: PageInformation) {
+        view?.showLoading()
+        AppspotService.getMessages(forPage: page) { [weak self] (response, error) in
+            self?.isLoadingNextPage = false
+            
+            DispatchQueue.main.async {
+                self?.view?.hideLoading()
+                if let messagesResponse = response {
+                    self?.handleSuccess(msgsResponse: messagesResponse)
+                } else {
+                    self?.handleFailure(error: error)
+                }
+            }
+        }
+    }
+    
+    private func handleSuccess(msgsResponse: MessagesResponse) {
+        messages.append(contentsOf: msgsResponse.messages)
+        let pageInfo = PageInformation(pageToken: msgsResponse.pageToken, count: msgsResponse.count)
+        currentPageInformation = pageInfo
+        view?.reloadMessages()
+    }
+    
+    private func handleFailure(error: APIDataTaskError?) {
+        view?.showError()
     }
 }

@@ -11,16 +11,19 @@ import UIKit
 final class MessageListViewController: UITableViewController {
     
     private lazy var presenter: MessageListPresenterType = MessageListPresenter()
+    private lazy var loadingAndErrorRetryView: ErrorRetryView? = {
+       let errorView = ErrorRetryView.loadFromNib()
+        errorView?.retryHandler = { [weak self] in
+            self?.presenter.loadMessages()
+        }
+        return errorView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         presenter.view = self
-        presenter.loadNextPage()
-    }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        presenter.loadMessages()
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -36,7 +39,7 @@ final class MessageListViewController: UITableViewController {
 // MARK: - Table view data source
 extension MessageListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.messages.count
+        return tableView.backgroundView == nil ? presenter.messages.count : 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -72,14 +75,54 @@ extension MessageListViewController {
     }
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.isAtBottom {
+        if scrollView.isAtBottom, tableView.tableFooterView == nil {
             presenter.loadNextPage()
         }
     }
 }
 
+// MARK: - MessageListPresentable
 extension MessageListViewController: MessageListPresentable {
-    func updateList() {
+    func reloadMessages() {
         tableView.reloadData()
     }
+    
+    func showError() {
+        loadingAndErrorRetryView?.showError()
+
+        let isLoadingFirstPage = presenter.messages.isEmpty
+        if isLoadingFirstPage {
+            tableView.backgroundView = loadingAndErrorRetryView
+        } else {
+            // error occured while loading a subsequent page
+            tableView.tableFooterView = loadingAndErrorRetryView
+            tableView.tableFooterView?.layoutIfNeeded()
+            //loadingAndErrorRetryView?.bounds = CGRect(x: .zero, y: .zero, width: tableView.bounds.width, height: 160.0)
+            tableView.scrollRectToVisible(loadingAndErrorRetryView!.frame, animated: true)
+        }
+        tableView.reloadData()
+    }
+    
+    func showLoading() {
+        loadingAndErrorRetryView?.showLoading()
+        
+        let isLoadingFirstPage = presenter.messages.isEmpty
+        if isLoadingFirstPage {
+            // loading first page. Hence show a full screen loading
+            tableView.backgroundView = loadingAndErrorRetryView
+        } else {
+            // loadind next page. Hence show loading indicator at the bottom of the list
+            tableView.tableFooterView = loadingAndErrorRetryView
+            tableView.tableFooterView?.layoutIfNeeded()
+            //loadingAndErrorRetryView?.bounds = CGRect(x: .zero, y: .zero, width: tableView.bounds.width, height: 44.0)
+        }
+        
+        tableView.reloadData()
+    }
+    
+    func hideLoading() {
+        tableView.backgroundView = nil
+        tableView.tableFooterView = nil
+    }
+
 }

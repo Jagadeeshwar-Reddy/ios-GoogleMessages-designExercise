@@ -10,26 +10,43 @@ import Foundation
 
 final class AppspotService {
     
-    static func getMessages(forPage page: PageInformation, completion: @escaping (MessagesResponse?, Error?) -> Void) {
+    static func getMessages(forPage page: PageInformation, completion: @escaping (MessagesResponse?, APIDataTaskError?) -> Void) {
         let route = AppspotAPI.messages(page: page)
         let request = route.request
 
         URLSession.shared.dataTask(with: request) { (data, urlResponse, error) in
             
-            DispatchQueue.main.async {
+            if let listData = data {
                 do {
-                    if let listData = data {
-                        let messages = try JSONDecoder().decode(MessagesResponse.self, from: listData)
-                        completion(messages, nil)
-                    } else {
-                        completion(nil, nil)
-                    }
+                    let messages = try JSONDecoder().decode(MessagesResponse.self, from: listData)
+                    completion(messages, nil)
                 } catch {
-                    completion(nil, error)
+                    completion(nil, APIDataTaskError.parsingError)
                 }
+            } else if let error = error {
+                completion(nil, APIDataTaskError.apiError(message: error.localizedDescription))
+            } else {
+                completion(nil, APIDataTaskError.other)
             }
-            
             
         }.resume()
     }
+}
+
+enum APIDataTaskError: Error {
+    case parsingError
+    case apiError(message: String)
+    case other
+    
+    var localizedDescription: String {
+        switch self {
+        case .parsingError:
+            return "Could not parse the data"
+        case .apiError(let message):
+            return message
+        case .other:
+            return "Something went wrong"
+        }
+    }
+    
 }

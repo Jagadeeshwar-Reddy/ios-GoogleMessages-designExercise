@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C21E50723FF035200755F79 /* ErrorRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C21E50623FF035200755F79 /* ErrorRetryView.swift */; };
+		2C21E50923FF035F00755F79 /* ErrorRetryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C21E50823FF035F00755F79 /* ErrorRetryView.xib */; };
+		2C21E50B23FF0C7600755F79 /* UIView+Nibloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C21E50A23FF0C7600755F79 /* UIView+Nibloading.swift */; };
 		2C50606723F8905E0068F43B /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C50606623F8905E0068F43B /* MessageDetailViewController.swift */; };
 		2C6FB28623F5E0C700C062A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6FB28523F5E0C700C062A3 /* AppDelegate.swift */; };
 		2C6FB28823F5E0C700C062A3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6FB28723F5E0C700C062A3 /* SceneDelegate.swift */; };
@@ -29,6 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C21E50623FF035200755F79 /* ErrorRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRetryView.swift; sourceTree = "<group>"; };
+		2C21E50823FF035F00755F79 /* ErrorRetryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorRetryView.xib; sourceTree = "<group>"; };
+		2C21E50A23FF0C7600755F79 /* UIView+Nibloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nibloading.swift"; sourceTree = "<group>"; };
 		2C50606623F8905E0068F43B /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
 		2C6FB28223F5E0C700C062A3 /* GoogleUXTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleUXTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6FB28523F5E0C700C062A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,10 +106,10 @@
 		2C6FB28423F5E0C700C062A3 /* GoogleUXTest */ = {
 			isa = PBXGroup;
 			children = (
-				2CEEB8A523F8204400ADF10E /* Common Views */,
-				2CEEB8BB23F8844600ADF10E /* Helpers */,
 				2C6FB28523F5E0C700C062A3 /* AppDelegate.swift */,
 				2C6FB28723F5E0C700C062A3 /* SceneDelegate.swift */,
+				2CEEB8A523F8204400ADF10E /* Common Views */,
+				2CEEB8BB23F8844600ADF10E /* Helpers */,
 				2CF682A923F947EE00A396EB /* View */,
 				2CEEB8A823F8263300ADF10E /* Network Layer */,
 				2C6FB28B23F5E0C700C062A3 /* Main.storyboard */,
@@ -119,6 +125,8 @@
 			children = (
 				2CEEB8A623F820CA00ADF10E /* ShadowedView.swift */,
 				2CEEB8BE23F8883300ADF10E /* RoundedImageView.swift */,
+				2C21E50623FF035200755F79 /* ErrorRetryView.swift */,
+				2C21E50823FF035F00755F79 /* ErrorRetryView.xib */,
 			);
 			path = "Common Views";
 			sourceTree = "<group>";
@@ -149,6 +157,7 @@
 			children = (
 				2CEEB8BC23F8846600ADF10E /* UIImageView+dowload.swift */,
 				2CF682AA23F95F9F00A396EB /* UIScrollView+Extensions.swift */,
+				2C21E50A23FF0C7600755F79 /* UIView+Nibloading.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -222,6 +231,7 @@
 			files = (
 				2C6FB29223F5E0CA00C062A3 /* LaunchScreen.storyboard in Resources */,
 				2C6FB28F23F5E0CA00C062A3 /* Assets.xcassets in Resources */,
+				2C21E50923FF035F00755F79 /* ErrorRetryView.xib in Resources */,
 				2C6FB28D23F5E0C700C062A3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,10 +253,12 @@
 				2CEEB8BF23F8883300ADF10E /* RoundedImageView.swift in Sources */,
 				2C6FB28823F5E0C700C062A3 /* SceneDelegate.swift in Sources */,
 				2CEEB8A723F820CA00ADF10E /* ShadowedView.swift in Sources */,
+				2C21E50723FF035200755F79 /* ErrorRetryView.swift in Sources */,
 				2CEEB8AD23F829BB00ADF10E /* AppspotAPI.swift in Sources */,
 				2CF682AB23F95F9F00A396EB /* UIScrollView+Extensions.swift in Sources */,
 				2CEEB8B823F857AE00ADF10E /* PageInformation.swift in Sources */,
 				2CEEB8B623F8471200ADF10E /* MessagesResponse.swift in Sources */,
+				2C21E50B23FF0C7600755F79 /* UIView+Nibloading.swift in Sources */,
 				2CEEB8BA23F87BF900ADF10E /* MessageListPresenter.swift in Sources */,
 				2CEEB8AA23F8283500ADF10E /* AppspotService.swift in Sources */,
 			);

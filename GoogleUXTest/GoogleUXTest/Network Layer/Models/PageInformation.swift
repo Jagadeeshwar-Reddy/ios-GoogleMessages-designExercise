@@ -14,7 +14,7 @@ struct PageInformation {
     let pageToken: String
     let itemCount: Int
     
-    init(pageToken: String = "1", count: Int = 25) {
+    init(pageToken: String = "", count: Int = 25) {
         self.pageToken = pageToken
         self.itemCount = count
     }
