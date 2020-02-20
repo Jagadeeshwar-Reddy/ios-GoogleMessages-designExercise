@@ -13,11 +13,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FHM-rm-o0L">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FHM-rm-o0L">
                     <rect key="frame" x="12" y="12" width="390" height="136"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="752" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZV-HM-YZN">
-                            <rect key="frame" x="83" y="0.0" width="224" height="38.5"/>
+                            <rect key="frame" x="83" y="0.0" width="224" height="40"/>
                             <string key="text">Sorry! Something went wrong. 
 Please try again later.</string>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -25,7 +25,7 @@ Please try again later.</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="OgH-Gh-z1J">
-                            <rect key="frame" x="185" y="58.5" width="20" height="17.5"/>
+                            <rect key="frame" x="185" y="60" width="20" height="16"/>
                         </activityIndicatorView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7i-kw-NvJ">
                             <rect key="frame" x="130" y="96" width="130" height="40"/>

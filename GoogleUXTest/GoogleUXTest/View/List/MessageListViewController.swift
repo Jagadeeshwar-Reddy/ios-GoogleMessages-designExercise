@@ -96,8 +96,7 @@ extension MessageListViewController: MessageListPresentable {
         } else {
             // error occured while loading a subsequent page
             tableView.tableFooterView = loadingAndErrorRetryView
-            tableView.tableFooterView?.layoutIfNeeded()
-            //loadingAndErrorRetryView?.bounds = CGRect(x: .zero, y: .zero, width: tableView.bounds.width, height: 160.0)
+            loadingAndErrorRetryView?.bounds = CGRect(origin: .zero, size: CGSize(width: tableView.bounds.width, height: 160.0))
             tableView.scrollRectToVisible(loadingAndErrorRetryView!.frame, animated: true)
         }
         tableView.reloadData()
@@ -113,8 +112,7 @@ extension MessageListViewController: MessageListPresentable {
         } else {
             // loadind next page. Hence show loading indicator at the bottom of the list
             tableView.tableFooterView = loadingAndErrorRetryView
-            tableView.tableFooterView?.layoutIfNeeded()
-            //loadingAndErrorRetryView?.bounds = CGRect(x: .zero, y: .zero, width: tableView.bounds.width, height: 44.0)
+            loadingAndErrorRetryView?.bounds = CGRect(origin: .zero, size: CGSize(width: tableView.bounds.width, height: 44.0))
         }
         
         tableView.reloadData()
