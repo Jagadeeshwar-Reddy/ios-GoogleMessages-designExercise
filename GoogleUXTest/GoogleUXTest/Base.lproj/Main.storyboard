@@ -11,23 +11,23 @@
         <scene sceneID="6be-3S-duZ">
             <objects>
                 <tableViewController id="ewk-sd-arb" customClass="MessageListViewController" customModule="GoogleUXTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zpl-Ln-YlE">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zpl-Ln-YlE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="144" id="AHS-LP-Vb7" customClass="MessageTableViewCell" customModule="GoogleUXTest" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="144" id="AHS-LP-Vb7" customClass="MessageTableViewCell" customModule="GoogleUXTest" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="144"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AHS-LP-Vb7" id="eht-Zx-bfU">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AHS-LP-Vb7" id="eht-Zx-bfU">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="144"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rst-WX-jxu" customClass="ShadowedView" customModule="GoogleUXTest" customModuleProvider="target">
-                                            <rect key="frame" x="12" y="8" width="390" height="128"/>
+                                            <rect key="frame" x="20" y="8" width="374" height="128"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="dSb-Dj-eOF">
-                                                    <rect key="frame" x="82" y="15.5" width="296" height="47"/>
+                                                    <rect key="frame" x="82" y="15.5" width="280" height="47"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xz1-4P-30L">
                                                             <rect key="frame" x="0.0" y="0.0" width="58" height="21.5"/>
@@ -52,7 +52,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long message goes here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s44-F5-1Sa">
-                                                    <rect key="frame" x="16" y="78" width="358" height="34"/>
+                                                    <rect key="frame" x="16" y="78" width="342" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -91,9 +91,9 @@
                                     </subviews>
                                     <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Rst-WX-jxu" secondAttribute="trailing" constant="12" id="3Tp-uy-msS"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Rst-WX-jxu" secondAttribute="trailing" id="3Tp-uy-msS"/>
                                         <constraint firstItem="Rst-WX-jxu" firstAttribute="top" secondItem="eht-Zx-bfU" secondAttribute="top" priority="998" constant="8" id="Gkc-qY-At7"/>
-                                        <constraint firstItem="Rst-WX-jxu" firstAttribute="leading" secondItem="eht-Zx-bfU" secondAttribute="leading" constant="12" id="JYh-fT-HTJ"/>
+                                        <constraint firstItem="Rst-WX-jxu" firstAttribute="leading" secondItem="eht-Zx-bfU" secondAttribute="leadingMargin" id="JYh-fT-HTJ"/>
                                         <constraint firstAttribute="bottom" secondItem="Rst-WX-jxu" secondAttribute="bottom" priority="998" constant="8" id="aku-ob-EiZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
