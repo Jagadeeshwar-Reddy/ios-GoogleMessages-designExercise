@@ -11,19 +11,30 @@ import UIKit
 final class MessageListViewController: UITableViewController {
     
     private lazy var presenter: MessageListPresenterType = MessageListPresenter()
-    private lazy var loadingAndErrorRetryView: ErrorRetryView? = {
+    private lazy var errorRetryView: ErrorRetryView? = {
        let errorView = ErrorRetryView.loadFromNib()
         errorView?.retryHandler = { [weak self] in
             self?.presenter.loadMessages()
         }
         return errorView
     }()
+    private lazy var loadingIndicator: UIActivityIndicatorView = {
+        let activityView = UIActivityIndicatorView(style: .medium)
+        activityView.tintColor = UIColor.systemGray
+        return activityView
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         presenter.view = self
         presenter.loadMessages()
+        NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [weak self] notification in
+            // do whatever you want when the app is brought back to the foreground
+            if self?.presenter.messages.isEmpty ?? false {
+                self?.presenter.loadMessages()
+            }
+        }
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -69,7 +80,12 @@ extension MessageListViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             presenter.removeMessage(at: indexPath.row, completion: { [weak self] success in
-                if success { self?.tableView.deleteRows(at: [indexPath], with: .fade) }
+                if success {
+                    self?.tableView.deleteRows(at: [indexPath], with: .fade)
+                    if self?.presenter.messages.isEmpty ?? false {
+                        self?.showEmptyState()
+                    }
+                }
             })
         }
     }
@@ -84,43 +100,50 @@ extension MessageListViewController {
 // MARK: - MessageListPresentable
 extension MessageListViewController: MessageListPresentable {
     func reloadMessages() {
+        if presenter.messages.isEmpty {
+            showEmptyState()
+        }
         tableView.reloadData()
     }
     
     func showError() {
-        loadingAndErrorRetryView?.showError()
-
         let isLoadingFirstPage = presenter.messages.isEmpty
         if isLoadingFirstPage {
-            tableView.backgroundView = loadingAndErrorRetryView
-        } else {
-            // error occured while loading a subsequent page
-            tableView.tableFooterView = loadingAndErrorRetryView
-            loadingAndErrorRetryView?.bounds = CGRect(origin: .zero, size: CGSize(width: tableView.bounds.width, height: 160.0))
-            tableView.scrollRectToVisible(loadingAndErrorRetryView!.frame, animated: true)
+            tableView.backgroundView = errorRetryView
+        } else { // error occured while loading a subsequent page
+            tableView.tableFooterView = errorRetryView
+            errorRetryView?.bounds = CGRect(origin: .zero, size: CGSize(width: tableView.bounds.width, height: 140.0))
+            tableView.scrollRectToVisible(errorRetryView!.frame, animated: true)
         }
         tableView.reloadData()
     }
     
     func showLoading() {
-        loadingAndErrorRetryView?.showLoading()
+        loadingIndicator.startAnimating()
         
         let isLoadingFirstPage = presenter.messages.isEmpty
-        if isLoadingFirstPage {
-            // loading first page. Hence show a full screen loading
-            tableView.backgroundView = loadingAndErrorRetryView
-        } else {
-            // loadind next page. Hence show loading indicator at the bottom of the list
-            tableView.tableFooterView = loadingAndErrorRetryView
-            loadingAndErrorRetryView?.bounds = CGRect(origin: .zero, size: CGSize(width: tableView.bounds.width, height: 44.0))
+        if isLoadingFirstPage { // loading first page. Hence show a full screen loading
+            tableView.backgroundView = loadingIndicator
+        } else { // loadind next page. Hence show loading indicator at the bottom of the list
+            tableView.tableFooterView = loadingIndicator
+            loadingIndicator.bounds = CGRect(origin: .zero, size: CGSize(width: tableView.bounds.width, height: 44.0))
         }
         
         tableView.reloadData()
     }
     
     func hideLoading() {
+        loadingIndicator.stopAnimating()
         tableView.backgroundView = nil
         tableView.tableFooterView = nil
     }
 
+    private func showEmptyState() {
+        let emptyStateLabel = UILabel()
+        emptyStateLabel.numberOfLines = 2
+        emptyStateLabel.textAlignment = .center
+        emptyStateLabel.text = "All caught up!\n No messages for now."
+        tableView.tableFooterView = nil
+        tableView.backgroundView = emptyStateLabel
+    }
 }

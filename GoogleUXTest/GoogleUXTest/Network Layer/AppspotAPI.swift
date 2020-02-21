@@ -40,7 +40,7 @@ extension AppspotAPI: EndPointType {
         return ["contentType": "application/json"]
     }
     
-    // TODO: Comeup with a better way of constructing the requesting and encoding the parameters
+    // TODO: Comeup with a better way of constructing the request and encoding the parameters
     var request: URLRequest {
         switch self {
         case .messages(let page):

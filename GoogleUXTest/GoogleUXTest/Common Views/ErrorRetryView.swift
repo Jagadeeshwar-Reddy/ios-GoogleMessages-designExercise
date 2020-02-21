@@ -12,7 +12,6 @@ class ErrorRetryView: UIView {
     typealias Action = (() -> Void)
     var retryHandler: Action?
     
-    @IBOutlet private weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var messageLabel: UILabel!
     @IBOutlet private weak var retryButton: UIButton! {
         didSet {
@@ -23,23 +22,4 @@ class ErrorRetryView: UIView {
     @IBAction func retryButtonTapped(_ sender: Any) {
         retryHandler?()
     }
-    
-    func showLoading() {
-        messageLabel.isHidden = true
-        retryButton.isHidden = true
-        
-        loadingIndicator.isHidden = false
-        loadingIndicator.startAnimating()
-        layoutIfNeeded()
-    }
-    
-    func showError() {
-        messageLabel.isHidden = false
-        retryButton.isHidden = false
-        
-        loadingIndicator.isHidden = true
-        loadingIndicator.stopAnimating()
-        layoutIfNeeded()
-    }
-    
 }
