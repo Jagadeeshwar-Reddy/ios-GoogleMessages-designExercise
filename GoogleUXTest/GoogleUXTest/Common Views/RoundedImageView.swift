@@ -10,9 +10,18 @@ import UIKit
 
 @IBDesignable
 class RoundedImageView: UIImageView {
-
+    private let roundedMask = CAShapeLayer()
+    
     override func setNeedsDisplay() {
         super.setNeedsDisplay()
-        layer.cornerRadius = bounds.height / 2.0
+        
+        let cornerRadius = bounds.height / 2.0
+        let path = UIBezierPath(roundedRect: bounds,
+                                byRoundingCorners: .allCorners,
+                                cornerRadii: CGSize(width: cornerRadius, height: cornerRadius))
+
+        roundedMask.path = path.cgPath
+        layer.mask = roundedMask
+        layer.drawsAsynchronously = true
     }
 }

@@ -36,7 +36,7 @@
 		2C21E50823FF035F00755F79 /* ErrorRetryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorRetryView.xib; sourceTree = "<group>"; };
 		2C21E50A23FF0C7600755F79 /* UIView+Nibloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nibloading.swift"; sourceTree = "<group>"; };
 		2C50606623F8905E0068F43B /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
-		2C6FB28223F5E0C700C062A3 /* GoogleUXTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleUXTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C6FB28223F5E0C700C062A3 /* Messages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6FB28523F5E0C700C062A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C6FB28723F5E0C700C062A3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2C6FB28923F5E0C700C062A3 /* MessageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListViewController.swift; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 		2C6FB28323F5E0C700C062A3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C6FB28223F5E0C700C062A3 /* GoogleUXTest.app */,
+				2C6FB28223F5E0C700C062A3 /* Messages.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,7 +188,7 @@
 			);
 			name = GoogleUXTest;
 			productName = GoogleUXTest;
-			productReference = 2C6FB28223F5E0C700C062A3 /* GoogleUXTest.app */;
+			productReference = 2C6FB28223F5E0C700C062A3 /* Messages.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -404,17 +404,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = FEY6Z943BR;
 				INFOPLIST_FILE = GoogleUXTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jagadeesh.GoogleUXTest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tesco.GoogleUXTest;
+				PRODUCT_NAME = Messages;
+				PROVISIONING_PROFILE_SPECIFIER = "Tesco Mobile apps dev";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -424,17 +424,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = FEY6Z943BR;
 				INFOPLIST_FILE = GoogleUXTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jagadeesh.GoogleUXTest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tesco.GoogleUXTest;
+				PRODUCT_NAME = Messages;
+				PROVISIONING_PROFILE_SPECIFIER = "Tesco Mobile apps dev";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
